@@ -541,10 +541,10 @@ def stFeatureExtraction(signal, Fs, Win, Step):
     [fbank, freqs] = mfccInitFilterBanks(Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
     nChroma, nFreqsPerChroma = stChromaFeaturesInit(nFFT, Fs)
 
-    numOfTimeSpectralFeatures = 4
+    numOfTimeSpectralFeatures = 8
     numOfHarmonicFeatures = 0
     nceps = 13
-    numOfChromaFeatures = 0
+    numOfChromaFeatures = 13
     totalNumOfFeatures = numOfTimeSpectralFeatures + nceps + numOfHarmonicFeatures + numOfChromaFeatures
 #    totalNumOfFeatures = numOfTimeSpectralFeatures + nceps + numOfHarmonicFeatures
     stFeatures = numpy.array([], dtype=numpy.float64)
@@ -560,17 +560,17 @@ def stFeatureExtraction(signal, Fs, Win, Step):
             Xprev = X.copy()                             # keep previous fft mag (used in spectral flux)
         curFV = numpy.zeros((totalNumOfFeatures, 1))
         curFV[0] = stZCR(x)                              # zero crossing rate
-        #curFV[1] = stEnergy(x)                           # short-term energy
-        curFV[1] = stEnergyEntropy(x)                    # short-term entropy of energy
-        #[curFV[3], curFV[4]] = stSpectralCentroidAndSpread(X, Fs)    # spectral centroid and spread
-        curFV[2] = stSpectralEntropy(X)                  # spectral entropy
-        curFV[3] = stSpectralFlux(X, Xprev)              # spectral flux
-        #curFV[7] = stSpectralRollOff(X, 0.90, Fs)        # spectral rolloff
+        curFV[1] = stEnergy(x)                           # short-term energy
+        curFV[2] = stEnergyEntropy(x)                    # short-term entropy of energy
+        [curFV[3], curFV[4]] = stSpectralCentroidAndSpread(X, Fs)    # spectral centroid and spread
+        curFV[5] = stSpectralEntropy(X)                  # spectral entropy
+        curFV[6] = stSpectralFlux(X, Xprev)              # spectral flux
+        curFV[7] = stSpectralRollOff(X, 0.90, Fs)        # spectral rolloff
         curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = stMFCC(X, fbank, nceps).copy()    # MFCCs
 
-        #chromaNames, chromaF = stChromaFeatures(X, Fs, nChroma, nFreqsPerChroma)
-        #curFV[numOfTimeSpectralFeatures + nceps: numOfTimeSpectralFeatures + nceps + numOfChromaFeatures - 1] = chromaF
-        #curFV[numOfTimeSpectralFeatures + nceps + numOfChromaFeatures - 1] = chromaF.std()
+        chromaNames, chromaF = stChromaFeatures(X, Fs, nChroma, nFreqsPerChroma)
+        curFV[numOfTimeSpectralFeatures + nceps: numOfTimeSpectralFeatures + nceps + numOfChromaFeatures - 1] = chromaF
+        curFV[numOfTimeSpectralFeatures + nceps + numOfChromaFeatures - 1] = chromaF.std()
 #        curFV[numOfTimeSpectralFeatures+nceps+numOfChromaFeatures-1] = numpy.nonzero( chromaF > 2.0 * chromaF.mean() )[0].shape[0]
 #        temp = numpy.sort(chromaF[:,0])
 #        curFV[numOfTimeSpectralFeatures+numOfChromaFeatures] = temp[-1] / numpy.mean(temp[0:5])
