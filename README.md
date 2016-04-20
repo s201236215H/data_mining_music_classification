@@ -12,6 +12,7 @@ The program first extract 4 features named ZCR, energyEntropy, SpectralEntropy, 
 4. ```python m_classify.m```
 
 ###Unfinished task
-The task of data mining should use cross-validation set instead of only training and testing set. We can use the library of sklearn for more accuracy.  
+The task of data mining should use cross-validation set instead of only training and testing set. We can use the library of sklearn for improving performence measure.  
+Also, find other ways to have better accuracy.  
 ####more info: 
 http://scikit-learn.org/stable/modules/cross_validation.html
