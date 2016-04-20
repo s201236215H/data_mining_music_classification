@@ -9,7 +9,10 @@ The program first extract 4 features named ZCR, energyEntropy, SpectralEntropy, 
 1. Download python,pip and the repository (Try not to run python on windows, may got some solvable problems)
 2. Goto `genre` directory
 3. ```pip install -r requirement.txt```
-4. ```python m_classify.m```
+4. run on bash:```python m_classify.py```  
+   run on python shell: ```python``` then ```execfile('m_classify.py')```
+5. Alternatively,you can run it on [The Jupyter Notebook](http://jupyter.org/) (a matlab-alike interactive environment)
+
 
 ###Unfinished task
 The task of data mining should use cross-validation set instead of only training and testing set. We can use the library of sklearn for improving performence measure.  
