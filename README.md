@@ -19,3 +19,5 @@ The task of data mining should use cross-validation set instead of only training
 Also, find other ways to have better accuracy.  
 ####more info: 
 http://scikit-learn.org/stable/modules/cross_validation.html
+http://mirlab.org/jang/books/audioSignalProcessing/appNote/musicGenreClassification/html/goTutorial.html
+
