@@ -96,7 +96,7 @@ pexpect==3.1
 pickleshare==0.7.2
 Pillow==2.3.0
 piston-mini-client==0.7.5
-protobuf==2.5.0
+protobuf==3.15.0
 ptyprocess==0.5.1
 pycasp==0.1
 pycrypto==2.6.1
