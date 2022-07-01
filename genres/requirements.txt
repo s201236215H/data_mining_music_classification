@@ -85,7 +85,7 @@ numpy==1.8.1
 oauth==1.0.1
 oauthlib==0.6.1
 oneconf==0.3.7.14.4.1
-openpyxl==1.7.0
+openpyxl==2.4.2
 PAM==0.4.2
 panda==0.3.1
 pandas==0.13.1
