@@ -13,7 +13,7 @@ brewer2mpl==1.4.1
 Brlapi==0.6.1
 bzr==2.7.0.dev1
 ccsm==0.9.11.3
-certifi==2016.2.28
+certifi==2022.12.7
 cgen==2015.1.1
 chardet==2.0.1
 CherryPy==3.2.2
